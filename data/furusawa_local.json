@@ -1,0 +1,178 @@
+[
+  {
+    "jp_name": "イーサンのホウオウex",
+    "en_name": "Ethan’s Ho‑Oh ex",
+    "set_name": "Heat Wave Arena (JP)",
+    "set_code": "SV9a",
+    "card_no": "090/063",
+    "rarity": "SIR",
+    "year": 2024,
+    "file": "sv9a_090_hooh_ex_sir.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/SV9a/0090066_HO_OHEX.jpg"
+  },
+  {
+    "jp_name": "ウィンディ",
+    "en_name": "Arcanine (Master Ball)",
+    "set_name": "Pokémon Card 151 (JP)",
+    "set_code": "SV2a",
+    "card_no": "059/165",
+    "rarity": "U (Master Ball)",
+    "year": 2023,
+    "file": "sv2a_059_arcanine_masterball.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/SV2a/0059065_WINDY.jpg"
+  },
+  {
+    "jp_name": "ガーディ",
+    "en_name": "Growlithe (Master Ball)",
+    "set_name": "Pokémon Card 151 (JP)",
+    "set_code": "SV2a",
+    "card_no": "058/165",
+    "rarity": "C (Master Ball)",
+    "year": 2023,
+    "file": "sv2a_058_growlithe_masterball.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/SV2a/0058065_GUARDY.jpg"
+  },
+  {
+    "jp_name": "ランクルス",
+    "en_name": "Reuniclus (AR)",
+    "set_name": "Wild Force",
+    "set_code": "SV5K",
+    "card_no": "075/071",
+    "rarity": "AR",
+    "year": 2024,
+    "file": "sv5k_075_reuniclus_ar.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/SV5K/0070071_REUNION.jpg"
+  },
+  {
+    "jp_name": "イーブイ",
+    "en_name": "Eevee (CHR)",
+    "set_name": "VMAX Climax",
+    "set_code": "S8b",
+    "card_no": "125/184",
+    "rarity": "CHR",
+    "year": 2021,
+    "file": "s8b_125_eevee_chr.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/0125184_EEVEE.jpg"
+  },
+  {
+    "jp_name": "ドータクン",
+    "en_name": "Bronzong",
+    "set_name": "VMAX Climax",
+    "set_code": "S8b",
+    "card_no": "113/184",
+    "rarity": "R",
+    "year": 2021,
+    "file": "s8b_113_bronzong.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/0113184_BRONZONG.jpg"
+  },
+  {
+    "jp_name": "キャストフォーム",
+    "en_name": "Castform (CSR)",
+    "set_name": "VMAX Climax",
+    "set_code": "S8b",
+    "card_no": "211/184",
+    "rarity": "CSR",
+    "year": 2021,
+    "file": "s8b_211_castform_csr.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/S8b/0211184_CASTFORM.jpg"
+  },
+  {
+    "jp_name": "ポッチャマ",
+    "en_name": "Piplup",
+    "set_name": "Star Birth",
+    "set_code": "S9",
+    "card_no": "025/100",
+    "rarity": "R",
+    "year": 2022,
+    "file": "s9_025_piplup.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/S9/0025100_PIPLUP.jpg"
+  },
+  {
+    "jp_name": "ゼラオラV",
+    "en_name": "Zeraora V (SR)",
+    "set_name": "Jet-Black Spirit",
+    "set_code": "S6K",
+    "card_no": "074/070",
+    "rarity": "SR",
+    "year": 2021,
+    "file": "s6k_074_zeraora_v_sr.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/S6K/0074070_ZERAORAV.jpg"
+  },
+  {
+    "jp_name": "ラプラス",
+    "en_name": "Lapras",
+    "set_name": "Silver Lance",
+    "set_code": "S6H",
+    "card_no": "018/070",
+    "rarity": "R",
+    "year": 2021,
+    "file": "s6h_018_lapras.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/S6H/0018070_LAPRAS.jpg"
+  },
+  {
+    "jp_name": "ミュウツー",
+    "en_name": "Mewtwo (R)",
+    "set_name": "Incandescent Arcana",
+    "set_code": "S11a",
+    "card_no": "035/068",
+    "rarity": "R",
+    "year": 2022,
+    "file": "s11a_035_mewtwo.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/S11a/0035068_MEWTWO.jpg"
+  },
+  {
+    "jp_name": "ケルディオ",
+    "en_name": "Keldeo (R)",
+    "set_name": "Paradigm Trigger",
+    "set_code": "S12",
+    "card_no": "023/098",
+    "rarity": "R",
+    "year": 2022,
+    "file": "s12_023_keldeo.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/S12/0023098_KELDEO.jpg"
+  },
+  {
+    "jp_name": "ピカチュウ",
+    "en_name": "Pikachu (CHR)",
+    "set_name": "Dark Phantasma",
+    "set_code": "S10a",
+    "card_no": "073/071",
+    "rarity": "CHR",
+    "year": 2022,
+    "file": "s10a_073_pikachu_chr.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/S10a/0073071_PIKACHU.jpg"
+  },
+  {
+    "jp_name": "エテボース",
+    "en_name": "Ambipom (R)",
+    "set_name": "Dark Phantasma",
+    "set_code": "S10a",
+    "card_no": "060/071",
+    "rarity": "R",
+    "year": 2022,
+    "file": "s10a_060_ambipom.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/S10a/0060071_AMBIPOM.jpg"
+  },
+  {
+    "jp_name": "フトゥー博士のシナリオ",
+    "en_name": "Professor Turo’s Scenario (SAR)",
+    "set_name": "Future Flash",
+    "set_code": "SV4M",
+    "card_no": "091/066",
+    "rarity": "SAR",
+    "year": 2023,
+    "file": "sv4m_091_prof_turo_sar.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/SV4M/0091066_FUTUO.jpg"
+  },
+  {
+    "jp_name": "ペニー",
+    "en_name": "Penny (U)",
+    "set_name": "Night Wanderer",
+    "set_code": "SV6a",
+    "card_no": "061/064",
+    "rarity": "U",
+    "year": 2024,
+    "file": "sv6a_061_penny.jpg",
+    "fallback": "https://www.pokemon-card.com/assets/images/card_images/large/SV6a/0061064_PENNY.jpg"
+  }
+]
