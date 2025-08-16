@@ -1,3 +1,4 @@
+const CACHE = 'furusawa-v4';
 // sw.js — netwerk-first voor icons en data, simpele cache voor de rest
 const CACHE = 'furusawa-v3';
 
