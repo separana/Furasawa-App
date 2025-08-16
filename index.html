@@ -23,6 +23,11 @@
     .warn{color:#ffb3b3}
   </style>
 </head>
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js?v=3'); // ← verhoog v-nummer bij elke wijziging
+}
+</script>
 <body>
   <header>
     <h1>Furusawa JP Collection</h1>
