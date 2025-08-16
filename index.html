@@ -96,10 +96,13 @@ if ('serviceWorker' in navigator) {
     const srcWithBuster = srcPrimary + (srcPrimary.includes('?')?'&':'?') + 'v=' + V;
 
     return `
-      <div class="card">
-        <img class="thumb" loading="lazy" src="${srcWithBuster}"
-             onerror="this.onerror=null; this.src='${PLACEHOLDER}?v=${V}'" alt="">
-        <div class="title">${item.en_name || item.jp_name || '—'}</div>
+  <div class="card">
+    <img class="thumb" loading="lazy"
+         src="icons/${item.set_code}_${(item.card_no+'').replace('/','-')}.jpg?v=5"
+         onerror="this.onerror=null;
+                  this.src=(item.icon || item.thumb || item.image || 'icons/placeholder.png');">
+    <div class="title">${item.en_name || item.jp_name || ''}</div>
+    ...
         <div class="meta">
           ${item.set_name || ''} • ${item.set_code || ''} • ${item.card_no || ''} • ${item.year || ''}
         </div>
