@@ -3,41 +3,126 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Furusawa Hotfix</title>
+<link rel="manifest" href="manifest.json">
+<title>Furusawa JP (local images)</title>
 <style>
-body{font-family:system-ui, -apple-system; background:#0f1115; color:#f5f7ff; margin:0}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px}
-.card{background:#151a23;border:1px solid #242938;border-radius:12px;overflow:hidden}
-.card img{width:100%;height:auto;display:block;background:#0f1420}
+:root{--bg:#0f1323;--card:#12172a;--text:#eaf2ff;--muted:#9fb0d0;--line:#232b47;--accent:#e11d48}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+header{position:sticky;top:0;background:rgba(15,19,35,.8);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10}
+.wrap{max-width:1200px;margin:0 auto;padding:12px 14px}
+h1{margin:0 0 6px;font-size:18px}
+.toolbar{display:grid;grid-template-columns:1fr 180px 180px;gap:8px}
+input,select{padding:10px;border-radius:10px;border:1px solid var(--line);background:#0d1222;color:var(--text)}
+.grid{padding:14px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3, 1fr);gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.imgbox{aspect-ratio:3/4;background:#0b1120}
+.imgbox img{width:100%;height:100%;object-fit:contain;display:block}
 .meta{padding:10px 12px}
+.title{font-weight:700}
+.sub{color:var(--muted);font-size:12px;margin-top:2px}
+.btn{padding:6px 10px;border:1px solid var(--line);background:#0d1222;color:var(--text);border-radius:10px}
+.fab{position:fixed;right:16px;bottom:16px;width:52px;height:52px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;border:3px solid #fff}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center}
+.modal.open{display:flex}
+.modal img{max-width:90vw;max-height:86vh;object-fit:contain}
+.loader{position:absolute;width:40px;height:40px;border-radius:50%;border:4px solid #fff;border-top-color:var(--accent);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+small{color:var(--muted)}
 </style>
 </head>
 <body>
-<input id="q" placeholder="Zoek…" style="width:100%;padding:10px;border:1px solid #242938;background:#10131a;color:#fff">
-<div id="grid" class="grid"></div>
-<script>
-const PATH = './data/furusawa_jp.v2.json?rev='+Date.now();
+<header>
+  <div class="wrap">
+    <h1>Furusawa JP Collection</h1>
+    <div class="toolbar">
+      <input id="search" placeholder="Zoek (naam / set / nr)…">
+      <select id="setFilter"><option value="">Alle sets</option></select>
+      <select id="rarityFilter"><option value="">Alle rariteiten</option></select>
+    </div>
+    <small>Afbeeldingen worden eerst lokaal gezocht in <code>/icons</code>. Bij fout wordt de fallback‑URL gebruikt.</small>
+  </div>
+</header>
 
+<div class="grid" id="grid"></div>
+
+<a class="fab" id="openGallery" title="Galerij">⏵</a>
+
+<div class="modal" id="viewer">
+  <div class="loader" id="spin"></div>
+  <img id="big" alt="">
+</div>
+
+<script>
+let DATA=[];
 async function load(){
-  const res = await fetch(PATH, {cache:'no-store'});
-  const data = await res.json();
-  window.DATA = data;
+  const r = await fetch('./data/furusawa_local.json?ts='+Date.now(), {cache:'no-store'});
+  DATA = await r.json();
   render();
 }
+function imgWithFallback(file, fallback){
+  const img = document.createElement('img');
+  img.loading='lazy';
+  img.src = 'icons/'+file;
+  img.onerror = ()=>{ img.onerror=null; img.src = fallback || 'icons/placeholder.png'; };
+  return img;
+}
 function render(){
-  const q = document.getElementById('q').value.toLowerCase();
-  const arr = window.DATA.filter(c => [c.en_name,c.jp_name,c.card_no,c.set_code,(c.set_name||'')].join(' ').toLowerCase().includes(q));
-  const grid = document.getElementById('grid'); grid.innerHTML='';
-  arr.forEach(c=>{
-    const div = document.createElement('div');
-    div.className = 'card';
-    div.innerHTML = `<img src="${c.thumb||c.image}" alt="">
-    <div class="meta"><div><b>${c.en_name||''}</b></div>
-    <div style="opacity:.8">${(c.set_name||'')} • ${(c.card_no||'')}</div></div>`;
-    grid.appendChild(div);
+  const q = document.getElementById('search').value.toLowerCase();
+  const sF = document.getElementById('setFilter').value;
+  const rF = document.getElementById('rarityFilter').value;
+
+  const sets = Array.from(new Set(DATA.map(c=>c.set_code).filter(Boolean))).sort();
+  const rars = Array.from(new Set(DATA.map(c=>c.rarity).filter(Boolean))).sort();
+  document.getElementById('setFilter').innerHTML = '<option value=\"\">Alle sets</option>'+sets.map(s=>`<option ${s===sF?'selected':''}>${s}</option>`).join('');
+  document.getElementById('rarityFilter').innerHTML = '<option value=\"\">Alle rariteiten</option>'+rars.map(s=>`<option ${s===rF?'selected':''}>${s}</option>`).join('');
+
+  const grid = document.getElementById('grid');
+  grid.innerHTML='';
+  const arr = DATA.filter(c=>{
+    const hay = [c.en_name,c.jp_name,c.set_code,c.card_no,(c.set_name||'')].join(' ').toLowerCase();
+    return (!q || hay.includes(q)) && (!sF || c.set_code===sF) && (!rF || c.rarity===rF);
+  });
+
+  arr.forEach((c,i)=>{
+    const card = document.createElement('div');
+    card.className='card';
+    const imgBox = document.createElement('div');
+    imgBox.className='imgbox';
+    imgBox.appendChild(imgWithFallback(c.file, c.fallback));
+    card.appendChild(imgBox);
+    const meta = document.createElement('div');
+    meta.className='meta';
+    meta.innerHTML = `<div class="title">${c.en_name}</div><div class="sub">${c.set_name||''} • ${c.set_code||''} • ${c.card_no||''} • ${c.rarity||''} • ${c.year||''}</div>`;
+    card.appendChild(meta);
+    card.addEventListener('click',()=>openViewer(arr, i));
+    grid.appendChild(card);
   });
 }
-document.getElementById('q').addEventListener('input', render);
+
+function openViewer(list, start){
+  const v = document.getElementById('viewer');
+  const big = document.getElementById('big');
+  const spin = document.getElementById('spin');
+  let idx = start;
+  function show(){
+    spin.style.display='block';
+    big.onload=()=>{ spin.style.display='none'; };
+    big.onerror=()=>{ big.src='icons/placeholder.png'; spin.style.display='none'; };
+    const item = list[idx];
+    big.src = 'icons/'+(item.file||'placeholder.png');
+    // fallback to remote if local missing
+    big.onerror = ()=>{ big.onerror=null; big.src = item.fallback || 'icons/placeholder.png'; };
+  }
+  v.classList.add('open');
+  v.onclick = (e)=>{ if(e.target===v) v.classList.remove('open'); };
+  document.onkeydown = (e)=>{
+    if(e.key==='Escape') v.classList.remove('open');
+    if(e.key==='ArrowRight'){ idx=(idx+1)%list.length; show(); }
+    if(e.key==='ArrowLeft'){ idx=(idx-1+list.length)%list.length; show(); }
+  };
+  show();
+}
+document.getElementById('search').addEventListener('input', render);
 load();
 </script>
 </body>
