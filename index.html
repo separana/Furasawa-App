@@ -142,5 +142,27 @@ if ('serviceWorker' in navigator) {
   })();
 })();
 </script>
+  <script>
+  // Registreer de SW met versie v=4 zodat browsers hem opnieuw ophalen
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js?v=4');
+  }
+
+  // Eenmalige “noodknop”: ga naar #reset-sw om oude SW + caches te wissen
+  (async () => {
+    if (location.hash === '#reset-sw' && 'serviceWorker' in navigator) {
+      try {
+        const regs = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(regs.map(r => r.unregister()));
+        if (window.caches) {
+          const keys = await caches.keys();
+          await Promise.all(keys.map(k => caches.delete(k)));
+        }
+        history.replaceState(null, '', location.pathname + location.search);
+        location.reload(true);
+      } catch (e) {}
+    }
+  })();
+</script>
 </body>
 </html>
