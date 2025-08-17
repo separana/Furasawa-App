@@ -215,8 +215,9 @@
   "card_no": "267/S-P",
   "rarity": "Promo",
   "year": 2022,
-  "thumb": "icons/promo-287-arceus-v.jpg",   // lokaal eerst
+  "icon": "icons/promo-287-arceus-v.jpg",
   "image": "https://www.pokemon-card.com/assets/images/card_images/large/S-P/0267_SP_ARCEUSV.jpg",
+  "thumb": "https://www.pokemon-card.com/assets/images/card_images/large/S-P/0267_SP_ARCEUSV.jpg",
   "price_nm_eur": 11,
   "price_psa10_eur": 65
 }
