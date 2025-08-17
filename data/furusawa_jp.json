@@ -207,20 +207,17 @@
     "price_psa10_eur": 35,
     "thumb": "https://www.pokemon-card.com/assets/images/card_images/large/SV6a/0061064_PENNY.jpg"
   }
-  {
-  "en_name": "Arceus V",
-  "jp_name": "アルセウスV",
-  "variant": "Promo",
-  "set_name": "S-P Promo",
-  "set_code": "S-P",
-  "card_no": "267/S-P",
-  "rarity": "Promo",
-  "year": 2021,
-  "price_nm_eur": 3.00,
-  "price_psa10_eur": 25.00,
-
-  "icons": [
-    "icons/promo-287-arceus-v.jpg",
-    "https://www.pokemon-card.com/assets/images/card_images/large/S-P/0267_SP_ARCEUSV.jpg"
-  ]
-}
+   {
+    "jp_name": "アルセウスV",
+    "en_name": "Arceus V (Promo)",
+    "set_name": "S-P Promo",
+    "set_code": "S-P",
+    "card_no": "267/S-P",
+    "rarity": "Promo",
+    "year": 2022,
+    "image": "https://www.pokemon-card.com/assets/images/card_images/large/S-P/0267_SP_ARCEUSV.jpg",
+    "price_nm_eur": 11,
+    "price_psa10_eur": 65,
+    "thumb": "https://www.pokemon-card.com/assets/images/card_images/large/S-P/0267_SP_ARCEUSV.jpg"
+  }
+]
