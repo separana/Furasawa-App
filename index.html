@@ -53,8 +53,8 @@ if ('serviceWorker' in navigator) {
   // --- Belangrijk: RELATIEVE PADEN + cachebuster ---
   const V = '2';                                 // wijzig naar 3,4,… als je opnieuw wil forceren
   const ICON_BASE = 'icons/';                    // <— NIET met leading slash!
-  const DATA_PRIMARY = 'data/furusawa_jp.json';  // hoofd-dataset
-  const DATA_FALLBACK = 'data/furusawa_jp.v2.json'; // fallback (optioneel aanwezig)
+  const DATA_PRIMARY = 'data/furusawa_jp.v2.json';  // hoofd-dataset
+  const DATA_FALLBACK = 'data/furusawa_jp.json'; // fallback (optioneel aanwezig)
   const PLACEHOLDER = ICON_BASE + 'placeholder.png';
 
   const $grid = document.getElementById('grid');
